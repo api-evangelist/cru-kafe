@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.crukafe.com/.well-known/openid-configuration
+summary: >-
+  CRU Kafe's account surface uses Shopify Customer Account OAuth 2.0 / OpenID Connect
+  (issuer shopify.com/authentication/14702456), Authorization Code with PKCE (S256),
+  RS256-signed ID tokens. This is the Shopify platform identity layer served on the
+  crukafe.com domain, not a bespoke CRU Kafe auth system.
+schemes:
+- id: shopify_customer_account_oauth
+  type: oauth2
+  flow: authorization_code
+  pkce:
+    required: true
+    methods:
+    - S256
+  issuer: https://shopify.com/authentication/14702456
+  authorization_endpoint: https://account.crukafe.com/authentication/oauth/authorize
+  token_endpoint: https://account.crukafe.com/authentication/oauth/token
+  end_session_endpoint: https://account.crukafe.com/authentication/logout
+  jwks_uri: https://account.crukafe.com/authentication/.well-known/jwks.json
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  grant_types:
+  - authorization_code
+  - refresh_token
+  - urn:ietf:params:oauth:grant-type:jwt-bearer
+  id_token_signing_alg:
+  - RS256
+  subject_types:
+  - public
+  scopes:
+  - openid
+  - email
+  - customer-account-api:full
+  - customer-account-mcp-api:full
