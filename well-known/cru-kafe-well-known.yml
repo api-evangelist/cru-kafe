@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of https://www.crukafe.com/.well-known/* (Shopify-hosted storefront)
+host: www.crukafe.com
+endpoints:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: cru-kafe-openid-configuration.json
+  note: Shopify Customer Account OAuth/OIDC discovery (issuer shopify.com/authentication/14702456)
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: cru-kafe-oauth-authorization-server.json
+  note: RFC 8414 authorization server metadata (same Shopify customer-account issuer)
+- path: /.well-known/ucp
+  status: 200
+  file: cru-kafe-ucp.json
+  note: Universal Commerce Protocol (UCP) merchant profile - agent-driven commerce, MCP transport
+- path: /.well-known/security.txt
+  status: 404
+  file: null
+- path: /.well-known/api-catalog
+  status: 404
+  file: null
+- path: /.well-known/ai-plugin.json
+  status: 404
+  file: null
+- path: /llms.txt
+  status: 200
+  file: ../llms/cru-kafe-llms.txt
+  note: agent instructions (mirrors /agents.md); documents UCP MCP endpoint + read-only browsing
+- path: /agents.md
+  status: 200
+  file: null
+  note: canonical agent-facing store description (mirror of llms.txt)

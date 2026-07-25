@@ -1,7 +1,28 @@
 aid: cru-kafe
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cru-kafe.png
 name: CRU Kafe
-description: CRU Kafe is a company surfaced as a portfolio company of seedcamp and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  CRU Kafe is a London-founded organic coffee brand selling Fairtrade, ethically sourced
+  coffee - including award-winning Nespresso-compatible pods from 33p per pod, plus ground
+  coffee and beans - direct to consumers through its Shopify storefront at crukafe.com.
+  Backed by Seedcamp, the company was added to the API Evangelist network as a portfolio
+  lead. CRU Kafe publishes no first-party developer API; its machine-readable surface is
+  the Shopify / Universal Commerce Protocol (UCP) agent-commerce layer served on its own
+  domain: a hosted UCP MCP endpoint for agent-driven catalog search and buyer-approved
+  checkout, an llms.txt / agents.md for AI shopping assistants, and Shopify Customer Account
+  OAuth 2.0 / OpenID Connect identity.
 url: https://raw.githubusercontent.com/api-evangelist/cru-kafe/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +32,54 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Coffee
+- Ecommerce
+- Retail
+- Consumer Goods
+- Food and Beverage
+- Shopify
+- Agent Commerce
+- UCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: CRU Kafe Agent Commerce (UCP)
+  description: >-
+    Shopify-native Universal Commerce Protocol surface served on crukafe.com: a hosted MCP
+    endpoint for agent-driven catalog search, cart, and buyer-approved checkout, backed by
+    Shopify Customer Account OAuth/OIDC. Platform-provided, not a bespoke CRU Kafe build.
+  humanURL: https://www.crukafe.com
+  baseURL: https://www.crukafe.com/api/ucp/mcp
+  properties:
+  - type: MCPServer
+    url: mcp/cru-kafe-mcp.yml
+  - type: Authentication
+    url: authentication/cru-kafe-authentication.yml
+  - type: OAuthScopes
+    url: scopes/cru-kafe-scopes.yml
+  - type: Conformance
+    url: conformance/cru-kafe-conformance.yml
 common:
+- type: DomainSecurity
+  url: security/cru-kafe-domain-security.yml
 - type: Website
   url: http://crukafe.com
+- type: LLMsTxt
+  url: llms/cru-kafe-llms.txt
+- type: WellKnown
+  url: well-known/cru-kafe-well-known.yml
+- type: PrivacyPolicy
+  url: https://www.crukafe.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.crukafe.com/policies/terms-of-service
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

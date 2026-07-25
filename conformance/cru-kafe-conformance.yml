@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://www.crukafe.com/.well-known/openid-configuration,
+  /.well-known/oauth-authorization-server, /.well-known/ucp, /llms.txt
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization_code + refresh_token grants advertised at
+    /.well-known/oauth-authorization-server (Shopify customer-account issuer).
+- id: oauth2-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256] in the OIDC discovery document (RFC 7636).
+- id: oauth2-authorization-server-metadata
+  conforms: true
+  evidence: RFC 8414 metadata document served at /.well-known/oauth-authorization-server.
+- id: oidc
+  conforms: true
+  evidence: >-
+    OpenID Connect discovery at /.well-known/openid-configuration; RS256 id_token,
+    standard claims (iss, sub, aud, exp, iat, nonce, sid, email, email_verified).
+- id: ucp
+  conforms: true
+  evidence: >-
+    Universal Commerce Protocol merchant profile at /.well-known/ucp (versions 2026-04-08,
+    2026-01-23) with dev.ucp.shopping service over MCP transport.
+- id: llms-txt
+  conforms: true
+  evidence: /llms.txt present and machine-readable, mirroring /agents.md.
+- id: fapi
+  conforms: false
+  evidence: No FAPI profile advertised; consumer-grade Shopify customer OAuth only.
+- id: rfc9457
+  conforms: false
+  evidence: No published OpenAPI or problem+json error contract for this storefront.

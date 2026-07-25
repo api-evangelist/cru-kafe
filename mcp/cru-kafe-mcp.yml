@@ -1,0 +1,66 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.crukafe.com/.well-known/ucp + https://www.crukafe.com/llms.txt
+name: CRU Kafe Shopping (UCP)
+description: >-
+  Hosted agent-commerce MCP server exposed natively by CRU Kafe's Shopify storefront
+  via the Universal Commerce Protocol (UCP). Lets agents search the catalog, build a
+  cart, and drive a buyer-approved checkout. Not a first-party CRU Kafe build - it is
+  the Shopify/UCP platform surface served on the crukafe.com domain.
+status: live
+protocol: Universal Commerce Protocol (UCP)
+ucp_versions:
+- '2026-04-08'
+- '2026-01-23'
+transport: mcp
+endpoints:
+- transport: mcp
+  url: https://www.crukafe.com/api/ucp/mcp
+  method: POST
+  content_type: application/json
+  note: canonical MCP endpoint documented in llms.txt; JSON-RPC (tools/list, tools/call)
+- transport: mcp
+  url: https://cru-lifestyle.myshopify.com/api/ucp/mcp
+  note: myshopify-origin endpoint advertised in the UCP service descriptor
+- transport: embedded
+  schema: https://ucp.dev/2026-04-08/services/shopping/embedded.openrpc.json
+discovery:
+  well_known: https://www.crukafe.com/.well-known/ucp
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+auth:
+  note: >-
+    tools/list requires a UCP agent profile URI (probe returned -32001 invalid_profile_url
+    without one); checkout requires contemporaneous buyer approval per llms.txt rules.
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+- dev.shopify.catalog
+# Tool names as documented in the store's llms.txt "Typical Agent Flow"
+tools:
+- name: search_catalog
+  description: Find products matching the buyer's intent.
+  status: documented
+- name: create_cart
+  description: Create a cart and add desired items.
+  status: documented
+- name: create_checkout
+  description: Start the purchase flow.
+  status: documented
+- name: update_checkout
+  description: Set shipping address and method.
+  status: documented
+- name: complete_checkout
+  description: Finalize the purchase (buyer must approve payment).
+  status: documented
+payment_handlers:
+- com.google.pay
+- shop_pay
+notes:
+- Checkout requires human approval - agents must not complete payment without buyer consent.
+- MCP endpoint is rate-limited per IP; back off on HTTP 429.
+- Shop skill (https://shop.app/SKILL.md) is the recommended cross-store agent path.

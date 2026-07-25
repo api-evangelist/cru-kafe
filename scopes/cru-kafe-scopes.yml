@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.crukafe.com/.well-known/openid-configuration (scopes_supported)
+docs: https://shopify.dev/docs/api/customer
+provider_note: >-
+  OAuth scopes advertised by the Shopify Customer Account OIDC discovery document served
+  on crukafe.com. Platform-standard Shopify customer-account scopes, not custom CRU Kafe scopes.
+scopes:
+- name: openid
+  description: OpenID Connect authentication; returns an ID token identifying the customer.
+- name: email
+  description: Access the authenticated customer's email address and verification status.
+- name: customer-account-api:full
+  description: Full access to the Shopify Customer Account API on behalf of the signed-in customer.
+- name: customer-account-mcp-api:full
+  description: Full access to the Customer Account MCP API surface (agent-driven customer operations).
