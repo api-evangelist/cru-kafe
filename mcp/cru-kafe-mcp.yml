@@ -7,7 +7,8 @@ description: >-
   via the Universal Commerce Protocol (UCP). Lets agents search the catalog, build a
   cart, and drive a buyer-approved checkout. Not a first-party CRU Kafe build - it is
   the Shopify/UCP platform surface served on the crukafe.com domain.
-status: live
+status: published
+status_raw: live
 protocol: Universal Commerce Protocol (UCP)
 ucp_versions:
 - '2026-04-08'
