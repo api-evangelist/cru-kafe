@@ -2,11 +2,10 @@ generated: '2026-07-18'
 method: searched
 source: https://www.crukafe.com/.well-known/ucp + https://www.crukafe.com/llms.txt
 name: CRU Kafe Shopping (UCP)
-description: >-
-  Hosted agent-commerce MCP server exposed natively by CRU Kafe's Shopify storefront
-  via the Universal Commerce Protocol (UCP). Lets agents search the catalog, build a
-  cart, and drive a buyer-approved checkout. Not a first-party CRU Kafe build - it is
-  the Shopify/UCP platform surface served on the crukafe.com domain.
+description: Hosted agent-commerce MCP server exposed natively by CRU Kafe's Shopify storefront via the
+  Universal Commerce Protocol (UCP). Lets agents search the catalog, build a cart, and drive a buyer-approved
+  checkout. Not a first-party CRU Kafe build - it is the Shopify/UCP platform surface served on the crukafe.com
+  domain.
 status: published
 status_raw: live
 protocol: Universal Commerce Protocol (UCP)
@@ -29,9 +28,8 @@ discovery:
   well_known: https://www.crukafe.com/.well-known/ucp
   schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
 auth:
-  note: >-
-    tools/list requires a UCP agent profile URI (probe returned -32001 invalid_profile_url
-    without one); checkout requires contemporaneous buyer approval per llms.txt rules.
+  note: tools/list requires a UCP agent profile URI (probe returned -32001 invalid_profile_url without
+    one); checkout requires contemporaneous buyer approval per llms.txt rules.
 capabilities:
 - dev.ucp.shopping.catalog.search
 - dev.ucp.shopping.catalog.lookup
@@ -41,7 +39,6 @@ capabilities:
 - dev.ucp.shopping.discount
 - dev.ucp.shopping.order
 - dev.shopify.catalog
-# Tool names as documented in the store's llms.txt "Typical Agent Flow"
 tools:
 - name: search_catalog
   description: Find products matching the buyer's intent.
@@ -65,3 +62,9 @@ notes:
 - Checkout requires human approval - agents must not complete payment without buyer consent.
 - MCP endpoint is rate-limited per IP; back off on HTTP 429.
 - Shop skill (https://shop.app/SKILL.md) is the recommended cross-store agent path.
+deployment:
+  mode: unclear
+  verified: searched
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census
