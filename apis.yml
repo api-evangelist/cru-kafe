@@ -86,6 +86,9 @@ apis:
     url: scopes/cru-kafe-scopes.yml
   - type: Conformance
     url: conformance/cru-kafe-conformance.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 common:
 - type: DomainSecurity
   url: security/cru-kafe-domain-security.yml
