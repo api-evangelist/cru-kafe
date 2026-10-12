@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/cru-kafe/integrations
+- https://n8n.io/integrations/cru-kafe/
+- https://composio.dev/toolkits/cru-kafe
+- https://monid.ai/tools/cru-kafe
+checked:
+- https://composio.dev/toolkits/cru-kafe
+- https://monid.ai/tools/cru-kafe
+- https://n8n.io/integrations/cru-kafe/
+- https://zapier.com/apps/cru-kafe/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
