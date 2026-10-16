@@ -1,0 +1,21 @@
+{
+  "repo": "cru-kafe",
+  "feeds": [
+    {
+      "source": "https://www.crukafe.com/blogs/news",
+      "feed_url": "https://www.crukafe.com/blogs/news.atom",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
+      "source": "https://www.crukafe.com/blogs/news.atom",
+      "feed_url": "https://www.crukafe.com/blogs/news.atom",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-10-10T13:15:00Z"
+}
